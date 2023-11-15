@@ -13,6 +13,7 @@ public class UsedTiles implements UsedTilesGiveInterface{
         tiles.addAll(tile);
     }
     public Collection<Tile> takeAll(){
+        tiles.remove(Tile.STARTING_PLAYER);
         List<Tile> tempTiles = new ArrayList<>(tiles);
         tiles.clear();
         return tempTiles;
