@@ -72,4 +72,12 @@ public class WallLine {
 
         return new Points(countHorizontal + countVertical - 1);
     }
+
+    public String state() {
+        StringBuffer str = new StringBuffer();
+        for (int i = 0; i < tilesPlacement.length; i++) {
+            str.append(String.format("%s: %s\n", tilesOrder.get(i).toString(), tilesPlacement[i] ? "placed" : "empty"));
+        }
+        return str.toString();
+    }
 }
