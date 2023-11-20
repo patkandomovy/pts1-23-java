@@ -14,16 +14,29 @@ public class WallLine {
         return tilesOrder;
     }
 
-    private final WallLine lineUp;
-    private final WallLine lineDown;
+    private WallLine lineUp;
+    private WallLine lineDown;
     private final ArrayList<Tile> tilesOrder;
     private final boolean[] tilesPlacement;
+
+    public WallLine(int index) {
+        tilesOrder = getTilesOrder(index);
+        tilesPlacement = new boolean[tilesOrder.size()];
+    }
 
     public WallLine(WallLine lineUp, WallLine lineDown, int index) {
         this.lineUp = lineUp;
         this.lineDown = lineDown;
         tilesOrder = getTilesOrder(index);
         tilesPlacement = new boolean[tilesOrder.size()];
+    }
+
+    public void setLineUp(WallLine wallLine) {
+        lineUp = wallLine;
+    }
+
+    public void setLineDown(WallLine wallLine) {
+        lineDown = wallLine;
     }
 
     public boolean canPutTile(Tile tile) {
@@ -60,7 +73,7 @@ public class WallLine {
         WallLine line = lineUp;
         while (line != null && line.tilesPlacement[index]) {
             countVertical++;
-            line = lineUp;
+            line = line.lineUp;
         }
         line = lineDown;
         while (line != null && line.tilesPlacement[index]) {
