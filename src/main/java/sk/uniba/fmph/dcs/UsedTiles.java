@@ -12,7 +12,7 @@ public class UsedTiles implements UsedTilesGiveInterface{
     public void give(Collection<Tile> tile) {
         tiles.addAll(tile);
     }
-    public Collection<Tile> takeAll(){
+    public List<Tile> takeAll(){
         tiles.remove(Tile.STARTING_PLAYER);
         List<Tile> tempTiles = new ArrayList<>(tiles);
         tiles.clear();
@@ -20,7 +20,7 @@ public class UsedTiles implements UsedTilesGiveInterface{
     }
     public String state(){
         String toReturn = "";
-        for (final Tile tile : tiles) {
+        for (Tile tile : tiles) {
             toReturn += tile.toString();
         }
         return toReturn;
