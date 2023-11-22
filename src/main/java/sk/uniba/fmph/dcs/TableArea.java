@@ -13,7 +13,7 @@ public class TableArea {
     public void addFactories(List<TileSource> factories){
         tileSources.addAll(factories);
     }
-    public Collection<Tile> take(int sourceIdx, int idx){
+    public List<Tile> take(int sourceIdx, int idx){
         Tile[] tiles = Tile.values();
         if(sourceIdx < tileSources.size()){
             return tileSources.get(sourceIdx).take(tiles[idx]);

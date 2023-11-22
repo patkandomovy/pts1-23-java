@@ -2,6 +2,7 @@ package sk.uniba.fmph.dcs;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public abstract class TileSource {
     protected ArrayList<Tile> tiles;
@@ -10,7 +11,7 @@ public abstract class TileSource {
         tiles = new ArrayList<>();
     }
 
-    public abstract Collection<Tile> take(Tile tileType);
+    public abstract List<Tile> take(Tile tileType);
 
     public boolean isEmpty() {
         return tiles.isEmpty();

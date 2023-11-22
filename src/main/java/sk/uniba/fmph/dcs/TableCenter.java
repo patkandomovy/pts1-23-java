@@ -2,6 +2,7 @@ package sk.uniba.fmph.dcs;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class TableCenter extends TileSource{
 
@@ -10,8 +11,8 @@ public class TableCenter extends TileSource{
         tiles.add(Tile.STARTING_PLAYER);
     }
     @Override
-    public Collection<Tile> take(Tile tileType) {
-        Collection<Tile> takenTiles = new ArrayList<>();
+    public List<Tile> take(Tile tileType) {
+        List<Tile> takenTiles = new ArrayList<>();
         if (tiles.contains(Tile.STARTING_PLAYER)) {
             takenTiles.add(Tile.STARTING_PLAYER);
         }
@@ -28,7 +29,7 @@ public class TableCenter extends TileSource{
         tiles.add(Tile.STARTING_PLAYER);
     }
 
-    public void add(Collection<Tile> tiles){
+    public void add(List<Tile> tiles){
         this.tiles.addAll(tiles);
     }
 }
