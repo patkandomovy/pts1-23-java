@@ -1,7 +1,6 @@
 package sk.uniba.fmph.dcs;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class TableArea {
@@ -13,11 +12,9 @@ public class TableArea {
     public void addFactories(List<TileSource> factories){
         tileSources.addAll(factories);
     }
-    public List<Tile> take(int sourceIdx, int idx){
-        Tile[] tiles = Tile.values();
-        if(sourceIdx < tileSources.size()){
-            return tileSources.get(sourceIdx).take(tiles[idx]);
-        }
+    public List<Tile> take(int sourceIdx, Tile tileType){
+        if(sourceIdx < tileSources.size())
+            return tileSources.get(sourceIdx).take(tileType);
         throw new ArrayIndexOutOfBoundsException();
     }
     public boolean isRoundEnd(){
