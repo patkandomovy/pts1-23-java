@@ -35,6 +35,14 @@ public class WallLine {
         lineUp = wallLine;
     }
 
+    public WallLine getLineUp() {
+        return lineUp;
+    }
+
+    public WallLine getLineDown() {
+        return lineDown;
+    }
+
     public void setLineDown(WallLine wallLine) {
         lineDown = wallLine;
     }
