@@ -1,5 +1,5 @@
 package sk.uniba.fmph.dcs;
 
-interface ObserverInterface {
+interface Observer {
     void update();
 }
