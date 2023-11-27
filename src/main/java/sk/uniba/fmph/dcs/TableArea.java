@@ -5,9 +5,9 @@ import java.util.List;
 
 public class TableArea {
     List<TileSource> tileSources;
-    public TableArea() {
+    public TableArea(TableCenter tableCenter) {
         tileSources = new ArrayList<>();
-        tileSources.add(new TableCenter());
+        tileSources.add(tableCenter);
     }
     public void addFactories(List<TileSource> factories){
         tileSources.addAll(factories);
