@@ -13,15 +13,10 @@ public class Board {
     private Floor floor;
     private List<List<Optional<Tile>>> wall = new ArrayList<>();
 
-    public Board() {
+    public Board(UsedTilesGiveInterface usedTiles) {
         points = new Points(0);
 
         ArrayList<WallLine> wall = new ArrayList<>();
-
-        for(int i = 1; i <= 5; i++) {
-            wall.add(new WallLine(i - 1));
-            leftSide.add(new PatternLine(i));
-        }
 
         ArrayList<Points> pointPattern = new ArrayList<>();
         pointPattern.add(new Points(-1));
@@ -31,6 +26,14 @@ public class Board {
         pointPattern.add(new Points(-2));
         pointPattern.add(new Points(-3));
         pointPattern.add(new Points(-3));
+
+        floor = new Floor(new UsedTiles(), pointPattern);
+
+        for(int i = 1; i <= 5; i++) {
+            wall.add(new WallLine(i - 1));
+            leftSide.add(new PatternLine(i, usedTiles, wall.get(i-1), floor));
+        }
+        rightSide = wall.get(0);
 
         for (int i = 0; i < wall.size(); i++) {
             if (i == 0) {
@@ -48,12 +51,10 @@ public class Board {
             wall.get(i).setLineUp(wall.get(i - 1));
             wall.get(i).setLineDown(wall.get(i + 1));
         }
-
-        floor = new Floor(new UsedTiles(), pointPattern);
     }
 
 
-    public void put(int destinationIdx, Collection<Tile> tiles) {
+    public void put(int destinationIdx, List<Tile> tiles) {
         leftSide.get(destinationIdx).put(tiles);
     }
 
