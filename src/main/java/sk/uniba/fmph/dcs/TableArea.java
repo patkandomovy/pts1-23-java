@@ -12,9 +12,9 @@ public class TableArea {
     public void addFactories(List<TileSource> factories){
         tileSources.addAll(factories);
     }
-    public List<Tile> take(int sourceIdx, Tile tileType){
+    public List<Tile> take(int sourceIdx, int idx){
         if(sourceIdx < tileSources.size())
-            return tileSources.get(sourceIdx).take(tileType);
+            return tileSources.get(sourceIdx).take(idx);
         throw new ArrayIndexOutOfBoundsException();
     }
     public boolean isRoundEnd(){

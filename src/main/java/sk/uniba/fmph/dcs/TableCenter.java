@@ -10,8 +10,9 @@ public class TableCenter extends TileSource{
         tiles.add(Tile.STARTING_PLAYER);
     }
     @Override
-    public List<Tile> take(Tile tileType) {
+    public List<Tile> take(int idx) {
         List<Tile> takenTiles = new ArrayList<>();
+        Tile tileType = tiles.get(idx);
         if (tiles.contains(Tile.STARTING_PLAYER)) {
             takenTiles.add(Tile.STARTING_PLAYER);
         }
