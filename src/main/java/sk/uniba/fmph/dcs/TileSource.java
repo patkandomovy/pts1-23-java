@@ -10,7 +10,7 @@ public abstract class TileSource {
         tiles = new ArrayList<>();
     }
 
-    public abstract List<Tile> take(Tile tileType);
+    public abstract List<Tile> take(int idx);
 
     public boolean isEmpty() {
         return tiles.isEmpty();
