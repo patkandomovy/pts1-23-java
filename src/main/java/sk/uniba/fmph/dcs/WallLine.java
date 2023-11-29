@@ -9,7 +9,7 @@ public class WallLine {
         Tile[] orderPattern = {Tile.BLUE, Tile.YELLOW, Tile.RED, Tile.BLACK, Tile.GREEN};
         ArrayList<Tile> tilesOrder = new ArrayList<>();
         for (int i = 0; i <= 4; i++) {
-            tilesOrder.add(orderPattern[(i + index) % 5]);
+            tilesOrder.add(orderPattern[(i + orderPattern.length - index) % 5]);
         }
         return tilesOrder;
     }

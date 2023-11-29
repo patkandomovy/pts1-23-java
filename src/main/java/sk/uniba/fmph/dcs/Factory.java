@@ -3,35 +3,37 @@ package sk.uniba.fmph.dcs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableCenter extends TileSource{
+public class Factory extends TileSource {
+    private final Bag bag;
+    private final TableCenter tableCenter;
 
-    public TableCenter() {
+    public Factory(Bag bag, TableCenter tableCenter) {
         super();
-        tiles.add(Tile.STARTING_PLAYER);
+        this.bag = bag;
+        this.tableCenter = tableCenter;
     }
+
     @Override
     public List<Tile> take(int idx) {
         List<Tile> takenTiles = new ArrayList<>();
+        if (idx >= tiles.size()) return new ArrayList<>();
         Tile tileType = tiles.get(idx);
-        if (tiles.contains(Tile.STARTING_PLAYER)) {
-            takenTiles.add(Tile.STARTING_PLAYER);
-        }
         for (Tile tile : tiles) {
             if (tile == tileType) {
                 takenTiles.add(tile);
             }
         }
+
         tiles.removeAll(takenTiles);
+        tableCenter.add(tiles);
+        tiles.clear();
         return takenTiles;
     }
+
     @Override
     public void startNewRound() {
-        if(!tiles.contains(Tile.STARTING_PLAYER)) {
-            tiles.add(Tile.STARTING_PLAYER);
-        }
+        this.tiles.addAll(bag.take(4));
     }
 
-    public void add(List<Tile> tiles){
-        this.tiles.addAll(tiles);
-    }
+
 }
