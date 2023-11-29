@@ -14,7 +14,7 @@ public class FinalPointsCalculation {
         int points = 0;
 
         for (List<Optional<Tile>> row : wall) {
-            if(isCompleted(row)) {
+            if (isCompleted(row)) {
                 points += 2;
             }
         }
@@ -36,8 +36,8 @@ public class FinalPointsCalculation {
             }
         }
 
-        for(List<Optional<Tile>> column : columns) {
-            if(isCompleted(column)) {
+        for (List<Optional<Tile>> column : columns) {
+            if (isCompleted(column)) {
                 points += 7;
             }
         }
@@ -53,14 +53,14 @@ public class FinalPointsCalculation {
             sameColours.add(new ArrayList<>());
         }
 
-        for(int i = 0; i < Tile.values().length; i++) {
-            for (int j = 0; j < Tile.values().length; j++) {
-                sameColours.get((j - i) % Tile.values().length).add(wall.get(i).get(j));
+        for (int i = 0; i < Tile.values().length; i++) {
+            for (int j = 0; j < Tile.values().length - 1; j++) {
+                sameColours.get((j + i) % Tile.values().length).add(wall.get(i).get(j));
             }
         }
 
-        for(List<Optional<Tile>> colour : sameColours) {
-            if(isCompleted(colour)) {
+        for (List<Optional<Tile>> colour : sameColours) {
+            if (isCompleted(colour)) {
                 points += 10;
             }
         }
@@ -70,7 +70,7 @@ public class FinalPointsCalculation {
 
     public static boolean isCompleted(List<Optional<Tile>> set) {
         for (Optional<Tile> element : set) {
-            if(element.isEmpty()) {
+            if (element.isEmpty()) {
                 return false;
             }
         }

@@ -1,5 +1,7 @@
 package sk.uniba.fmph.dcs;
 
+import java.util.List;
+
 public class BoardsObserver implements Observer {
     private final Game game;
 
@@ -9,9 +11,10 @@ public class BoardsObserver implements Observer {
 
     @Override
     public void update() {
-        String state = game.getState().get(Board.class);
-        if (state != null) {
-            System.out.println(state);
+        List<Board> boards = game.getBoards();
+        for (int i = 0; i < boards.size(); i++) {
+            String state = boards.get(i).state();
+            System.out.println("Board " + i + ": \n" + state);
         }
     }
 }
