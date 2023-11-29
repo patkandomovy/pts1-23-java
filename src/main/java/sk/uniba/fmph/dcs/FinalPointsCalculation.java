@@ -53,7 +53,7 @@ public class FinalPointsCalculation {
             sameColours.add(new ArrayList<>());
         }
 
-        for (int i = 0; i < Tile.values().length; i++) {
+        for (int i = 0; i < Tile.values().length - 1; i++) {
             for (int j = 0; j < Tile.values().length - 1; j++) {
                 sameColours.get((j + i) % Tile.values().length).add(wall.get(i).get(j));
             }
